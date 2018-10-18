@@ -21,4 +21,4 @@ tester.o:	tester.c ifttt.h
 	$(CC) $(CFLAGS) -c -ansi $<
 
 clean:
-rm tester *.o
+	rm tester *.o

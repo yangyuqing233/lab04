@@ -8,22 +8,21 @@ int i;
   pinMode(1,OUTPUT);
   pinMode(2,OUTPUT);
   while(1) {
-<<<<<<< HEAD
+
     printf("waitting for reset\n");
     while (digitalRead(0)==1){
     printf("Got a 1\n");
     digitalWrite(2,HIGH);
     digitalWrite(1,LOW);
-    ifttt("http://red.eecs.yorku.ca:8080/trigger/event/with/key/123", "george1", "EECS32222", "Hii George1 1234656");
-}
+    
+ }
    printf("waitting for event\n");
     if(digitalRead(0) == 0){
     printf("Got a 0\n");
     digitalWrite(2,LOW);
     digitalWrite(1,HIGH);delay(200);
-    digitalWrite(1,LOW);}
-=======
-    printf("Waiting for reset\n");
+    digitalWrite(1,LOW);
+    printf("Waiting for reset\n");}
     
     while(digitalRead(0) == 0){
     printf("Waiting for event\n");
@@ -32,7 +31,7 @@ int i;
 	}
     
     while(digitalRead(0) == 1){
->>>>>>> 19bf27ab8f9cb17b867a5e97e2dc31175ccda54c
+
     printf("Alarm\n");
     digitalWrite (2, HIGH); delay(500);
     digitalWrite (1, LOW);
