@@ -1,8 +1,14 @@
+LDFLAGS=-lwiringPi
 CC=gcc
-CFLAGS=-lWarn -pedantic
-alarm:	irtester.o libmyifttt.a
-	$(CC) irtester.o -L. -lwiringPi -lmyifttt -lcurl -o irtester
-tester:	tester.o libmyifttt.a
+CFLAGS=-lWarn  -pedantic
+
+irtester:	irtester.o
+	$(CC) irtester.o -o irtester $(LDFLAGS)
+
+irtester.o:	irtester.c
+	$(CC) $(CFLAGS) -c -ansi $<
+
+tester: tester.o libmyifttt.a
 	$(CC) tester.o -L. -lmyifttt -lcurl -o tester
 
 libmyifttt.a:	ifttt.o
@@ -13,7 +19,6 @@ ifttt.o: 	ifttt.c ifttt.h
 
 tester.o:	tester.c ifttt.h
 	$(CC) $(CFLAGS) -c -ansi $<
-irtester.o:	irtester.c ifttt.h
-	$(CC) $(CFLAGS) -c -ansi $<
-clean:	rm tester *.o
-all: tester output
+
+clean:
+rm tester *.o
